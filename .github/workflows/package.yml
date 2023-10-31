@@ -23,7 +23,9 @@ jobs:
       - name: Run linter
         run: npm run lint
       - name: Package
-        run: npm run package
+        run: |
+          export NODE_OPTIONS=--openssl-legacy-provider
+          npm run package
       - name: Commit
         run: |
           git config --global user.name "GitHub Actions"
