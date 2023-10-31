@@ -84,7 +84,7 @@ async function waitForRunnerRegistered(label) {
 }
 
 function getInputOrUndefined(name) {
-  value = core.getInput(name);
+  const value = core.getInput(name);
   if (value) {
     return value;
   }
