@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const gh = require('./gh');
 
 class Config {
   constructor() {
@@ -12,11 +13,12 @@ class Config {
       securityGroupId: core.getInput('security-group-id'),
       label: core.getInput('label'),
       ec2InstanceId: core.getInput('ec2-instance-id'),
-      iamRoleName: core.getInput('iam-role-name'),
+      iamRoleName: gh.getInputOrUndefined('iam-role-name'),
+      blockDeviceMappings: gh.getInputOrUndefined('block-device-mappings'),
+      keyName: gh.getInputOrUndefined('key-name'),
       runnerHomeDir: core.getInput('runner-home-dir'),
       preRunnerScript: core.getInput('pre-runner-script'),
-      blockDeviceMappings: JSON.parse(core.getInput('block-device-mapping')),
-      keyName: core.getInput('key-name'),
+      runnerVersion: core.getInput('runner-version')
     };
 
     const tags = JSON.parse(core.getInput('aws-resource-tags'));

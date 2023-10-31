@@ -61,14 +61,6 @@ inputs:
       for example: '[{"Key": "TagKey1", "Value": "TagValue1"}, {"Key": "TagKey2", "Value": "TagValue2"}]'
     required: false
     default: '[]'
-  runner-home-dir:
-    description: >-
-      Directory that contains actions-runner software and scripts. E.g. /home/runner/actions-runner.
-    required: false
-  pre-runner-script:
-    description: >-
-      Specifies bash commands to run before the runner starts. It's useful for installing dependencies with apt-get, yum, dnf, etc.
-    required: false
   block-device-mapping:
     description: >-
       JSON string of EC2 BlockDeviceMapping (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-blockdevicemapping.html).
@@ -78,6 +70,19 @@ inputs:
     description: >-
       Assign SSH key-pair name to an instance.  This can be useful for SSHing into an instance for debugging.
     required: false
+  runner-home-dir:
+    description: >-
+      Directory that contains actions-runner software and scripts. E.g. /home/runner/actions-runner.
+    required: false
+  pre-runner-script:
+    description: >-
+      Specifies bash commands to run before the runner starts. It's useful for installing dependencies with apt-get, yum, dnf, etc.
+    required: false
+  runner-version:
+    description: >-
+      Specifies the version of the runner to install on the instance (https://github.com/actions/runner/releases).
+    required: false
+    default: '2.311.0'
 
 outputs:
   label:

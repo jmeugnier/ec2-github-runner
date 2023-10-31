@@ -83,8 +83,17 @@ async function waitForRunnerRegistered(label) {
   });
 }
 
+function getInputOrUndefined(name) {
+  value = core.getInput(name);
+  if (value) {
+    return value;
+  }
+  return undefined;
+}
+
 module.exports = {
   getRegistrationToken,
   removeRunner,
   waitForRunnerRegistered,
+  getInputOrUndefined
 };
