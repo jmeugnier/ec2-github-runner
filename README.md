@@ -207,7 +207,7 @@ Now you're ready to go!
 | `runner-home-dir`                                                                                                                                                              | Optional. Used only with the `start` mode. | Specifies a directory where pre-installed actions-runner software and scripts are located.<br><br> |
 | `pre-runner-script`                                                                                                                                                              | Optional. Used only with the `start` mode. | Specifies bash commands to run before the runner starts.  It's useful for installing dependencies with apt-get, yum, dnf, etc. For example:<pre>          - name: Start EC2 runner<br>            with:<br>              mode: start<br>              ...<br>              pre-runner-script: \|<br>                 sudo yum update -y && \ <br>                 sudo yum install docker git libicu -y<br>                 sudo systemctl enable docker</pre>
 `key-name`                                                                                                                                                              | Optional. Used only with the `start` mode. | Specifies SSH key-pair name to assign to an instance.  This is useful for SSHing into an instance for debugging.<br><br> |
-| `block-device-mapping`                                                                                                                                                              | Optional. Used only with the `start` mode. | JSON string specifying the [BlockDeviceMapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-mapping.html).  For example:<pre> block-device-mapper: \|<br>   [<br>   {"DeviceName" : "/dev/sda1", "Ebs" : { "VolumeType": "gp2", "VolumeSize": 34 }},<br>   {"DeviceName" : "/dev/sdb", "VirtualName": "ephemeral0" }<br>   ]
+| `block-device-mapping`                                                                                                                                                              | Optional. Used only with the `start` mode. | JSON string specifying the [BlockDeviceMapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-mapping.html).  For example:<pre> block-device-mapping: \|<br>   [<br>   {"DeviceName" : "/dev/sda1", "Ebs" : { "VolumeType": "gp2", "VolumeSize": 34 }},<br>   {"DeviceName" : "/dev/sdb", "VirtualName": "ephemeral0" }<br>   ]
 </pre>|
 
 ### Environment variables
@@ -266,7 +266,7 @@ jobs:
               {"Key": "GitHubRepository", "Value": "${{ github.repository }}"}
             ]
           key-name: my-ssh-key # optional
-          block-device-mapper: | # optional
+          block-device-mapping: | # optional
             [
             {"DeviceName" : "/dev/sda1", "Ebs" : { "VolumeType": "gp2", "VolumeSize": 34 }},
             {"DeviceName" : "/dev/sdb", "VirtualName": "ephemeral0" }

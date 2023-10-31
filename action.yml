@@ -71,7 +71,7 @@ inputs:
     required: false
   block-device-mapping:
     description: >-
-      JSON string of EC2 BlockDeviceMapping (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-mapping.html).
+      JSON string of EC2 BlockDeviceMapping (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance-blockdevicemapping.html).
     required: false
     default: '[]'
   key-name:
