@@ -30,7 +30,7 @@ function buildUserDataScript(githubRegistrationToken, label) {
       `export RUNNER_VERSION=${config.input.runnerVersion}`,
       'export RUNNER_ALLOW_RUNASROOT=1',
       'export HOME=$(pwd)',
-      'export DOTNET_CLI_HOME=$HOME',
+      'export DOTNET_CLI_HOME=/tmp',
       'case $(uname -m) in aarch64) ARCH="arm64" ;; amd64|x86_64) ARCH="x64" ;; esac && export RUNNER_ARCH=${ARCH}',
       'echo "[ec2-github-runner] Runner Environment Variables:"',
       'env',
