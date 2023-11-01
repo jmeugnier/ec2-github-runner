@@ -22,15 +22,15 @@ function buildUserDataScript(githubRegistrationToken, label) {
     return [
       '#!/bin/bash',
       'mkdir actions-runner && cd actions-runner',
-      'export HOME=$(pwd)',
-      'export DOTNET_CLI_HOME=$HOME',
       `echo "${config.input.preRunnerScript}" > pre-runner-script.sh`,
       'source pre-runner-script.sh',
       `export RUNNER_VERSION=${config.input.runnerVersion}`,
       'case $(uname -m) in aarch64) ARCH="arm64" ;; amd64|x86_64) ARCH="x64" ;; esac && export RUNNER_ARCH=${ARCH}',
-      'curl -O -L https://github.com/actions/runner/releases/download/${RUNNER_VERSION}/actions-runner-linux-${RUNNER_ARCH}-${RUNNER_VERSION}.tar.gz',
+      'curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-${RUNNER_ARCH}-${RUNNER_VERSION}.tar.gz',
       'tar xzf ./actions-runner-linux-${RUNNER_ARCH}-${RUNNER_VERSION}.tar.gz',
       'export RUNNER_ALLOW_RUNASROOT=1',
+      'export HOME=$(pwd)',
+      'export DOTNET_CLI_HOME=$HOME',
       `./config.sh --url https://github.com/${config.githubContext.owner}/${config.githubContext.repo} --token ${githubRegistrationToken} --labels ${label}`,
       './run.sh',
     ];
