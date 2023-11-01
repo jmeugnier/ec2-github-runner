@@ -9,7 +9,16 @@ function setOutput(label, ec2InstanceId) {
 }
 
 async function start() {
+  core.debug('index.start() start: Config object:' + JSON.stringify(config));
+
+  const conf = config();
+  core.debug('index.start() start: Config object after conf = config():' + JSON.stringify(config));
+  core.debug('index.start() start: conf const content:' + JSON.stringify(conf));
+
+  core.debug('index.start(): exec config.generateUniqueLabel()...');
   const label = config.generateUniqueLabel();
+  core.debug('index.start(): config.generateUniqueLabel() = ' + label);
+
   const githubRegistrationToken = await gh.getRegistrationToken();
   const ec2InstanceId = await aws.startEc2Instance(label, githubRegistrationToken);
   setOutput(label, ec2InstanceId);
