@@ -25,7 +25,7 @@ function buildUserDataScript(githubRegistrationToken, label) {
       'echo "=== RUN ec2-github-runner INIT SCRIPT ==="',
       'echo "[ec2-github-runner] actions-runner folder location: $(pwd)"',
       `echo "${config.input.preRunnerScript}" > pre-runner-script.sh`,
-      'echo "[ec2-github-runner] RUN "$(pwd)/pre-runner-script.sh"',
+      'echo "[ec2-github-runner] RUN $(pwd)/pre-runner-script.sh"',
       'source pre-runner-script.sh',
       `export RUNNER_VERSION=${config.input.runnerVersion}`,
       'export RUNNER_ALLOW_RUNASROOT=1',
