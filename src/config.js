@@ -4,6 +4,9 @@ const gh = require('./gh');
 
 class Config {
   constructor() {
+
+    core.debug('Config.constructor() start');
+
     this.input = {
       mode: core.getInput('mode'),
       githubToken: core.getInput('github-token'),
@@ -58,6 +61,8 @@ class Config {
     } else {
       throw new Error('Wrong mode. Allowed values: start, stop.');
     }
+
+    core.debug('Config.constructor() end. this: ' + JSON.stringify(this));
   }
 
   generateUniqueLabel() {

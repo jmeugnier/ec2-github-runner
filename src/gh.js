@@ -19,11 +19,13 @@ async function getRunner(label) {
 
 // get GitHub Registration Token for registering a self-hosted runner
 async function getRegistrationToken() {
+  core.debug('getRegistrationToken() start');
   const octokit = github.getOctokit(config.input.githubToken);
 
   try {
     const response = await octokit.request('POST /repos/{owner}/{repo}/actions/runners/registration-token', config.githubContext);
     core.info('GitHub Registration Token is received');
+    core.debug(`GitHub Registration Token: ${response.data.token}`);
     return response.data.token;
   } catch (error) {
     core.error('GitHub Registration Token receiving error');
