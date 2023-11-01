@@ -1,6 +1,13 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const gh = require('./gh');
+
+function getInputOrUndefined(name) {
+  const value = core.getInput(name);
+  if (value) {
+    return value;
+  }
+  return undefined;
+}
 
 class Config {
   constructor() {
@@ -16,13 +23,14 @@ class Config {
       securityGroupId: core.getInput('security-group-id'),
       label: core.getInput('label'),
       ec2InstanceId: core.getInput('ec2-instance-id'),
-      iamRoleName: gh.getInputOrUndefined('iam-role-name'),
-      blockDeviceMappings: gh.getInputOrUndefined('block-device-mappings'),
-      keyName: gh.getInputOrUndefined('key-name'),
+      iamRoleName: getInputOrUndefined('iam-role-name'),
+      blockDeviceMappings: getInputOrUndefined('block-device-mappings'),
+      keyName: getInputOrUndefined('key-name'),
       runnerHomeDir: core.getInput('runner-home-dir'),
       preRunnerScript: core.getInput('pre-runner-script'),
       runnerVersion: core.getInput('runner-version')
     };
+
 
     const tags = JSON.parse(core.getInput('aws-resource-tags'));
     this.tagSpecifications = null;

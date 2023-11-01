@@ -86,17 +86,8 @@ async function waitForRunnerRegistered(label) {
   });
 }
 
-async function getInputOrUndefined(name) {
-  const value = core.getInput(name);
-  if (value) {
-    return value;
-  }
-  return undefined;
-}
-
 module.exports = {
   getRegistrationToken,
   removeRunner,
-  waitForRunnerRegistered,
-  getInputOrUndefined
+  waitForRunnerRegistered
 };
