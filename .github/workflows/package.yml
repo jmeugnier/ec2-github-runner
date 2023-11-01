@@ -29,6 +29,7 @@ jobs:
       - name: Commit
         run: |
           git config --global user.name "GitHub Actions"
+          git config --global user.email "ec2-github-runner@jul-m.github"
           git add dist/
           git commit -m "Update dist" || echo "No changes to commit"
           git push origin main
