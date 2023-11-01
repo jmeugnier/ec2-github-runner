@@ -24,7 +24,7 @@ class Config {
       label: core.getInput('label'),
       ec2InstanceId: core.getInput('ec2-instance-id'),
       iamRoleName: getInputOrUndefined('iam-role-name'),
-      blockDeviceMappings: getInputOrUndefined('block-device-mappings'),
+      blockDeviceMappings: getInputOrUndefined('block-device-mapping'),
       keyName: getInputOrUndefined('key-name'),
       runnerHomeDir: core.getInput('runner-home-dir'),
       preRunnerScript: core.getInput('pre-runner-script'),
