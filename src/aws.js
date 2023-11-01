@@ -22,7 +22,7 @@ function buildUserDataScript(githubRegistrationToken, label) {
     return [
       '#!/bin/bash',
       'mkdir actions-runner && cd actions-runner',
-      'echo "=== RUN ec2-github-runner" INIT SCRIPT ==="',
+      'echo "=== RUN ec2-github-runner INIT SCRIPT ==="',
       'echo "[ec2-github-runner] actions-runner folder location: $(pwd)"',
       `echo "${config.input.preRunnerScript}" > pre-runner-script.sh`,
       'echo "[ec2-github-runner] RUN "$(pwd)/pre-runner-script.sh"',
